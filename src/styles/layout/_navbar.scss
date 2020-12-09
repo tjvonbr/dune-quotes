@@ -1,0 +1,17 @@
+.navbar {
+  height: 5vh;
+  width: 20%;
+  position: fixed;
+  left: -20%;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1;
+  transition: left ease-in-out .5s
+}
+
+.navbar.active {
+  left: 0;
+}

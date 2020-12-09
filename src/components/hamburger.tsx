@@ -1,8 +1,16 @@
-import React from "react"
+import React, { MouseEvent } from "react"
 
-const Hamburger: React.FC = () => {
+type HamburgerProps = {
+  visible: boolean,
+  toggle: (event: React.MouseEvent<HTMLDivElement>) => void
+}
+
+const Hamburger = ({ visible, toggle }: HamburgerProps) => {
   return (
-    <div className="hamburger-wrapper">
+    <div 
+      className={visible ? "hamburger active" : "hamburger"} 
+      onClick={toggle}
+    >
       <div className="hamburger-bar" />
       <div className="hamburger-bar" />
     </div>
