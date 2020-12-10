@@ -1,10 +1,9 @@
 import React from "react"
 import AppShell from "../components/app-shell"
-import { RouteComponentProps } from "react-router-dom"
 
-const Home = ({ history }: { history: History }) => {
+const Home: React.FC = () => {
   return (
-    <AppShell history={history}>
+    <AppShell>
       <div className="home-title-wrapper">
         <div>
           <h1 className="home-title">Dune</h1>

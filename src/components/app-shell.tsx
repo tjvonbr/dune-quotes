@@ -2,12 +2,11 @@ import React, { useState } from "react"
 import Hamburger from "./hamburger"
 import Navbar from "./navbar"
 
-type Props = {
-  history: History,
-  children: React.ReactChildren
+interface Props {
+  children: React.ReactChild
 }
 
-const AppShell:React.FC<Props> = ({ history, children }) => {
+const AppShell: React.FC<Props> = ({ children }) => {
   const [isVisible, setIsVisible] = useState<boolean>(false)
 
   const toggleNavbar = () => {
@@ -18,7 +17,7 @@ const AppShell:React.FC<Props> = ({ history, children }) => {
   return (
     <div className="app-shell">
       <Hamburger visible={isVisible} toggle={toggleNavbar} />
-      <Navbar history={history} visible={isVisible} />
+      <Navbar visible={isVisible} />
       {children}
     </div>
   )
