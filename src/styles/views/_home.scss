@@ -7,7 +7,7 @@
 }
 
 .home-title-wrapper {
-  width: 70%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,22 +22,31 @@
 
 .home-description {
   font-size: 1.6rem;
-  font-family: "Lato", sans-serif;
   text-align: right;
 }
 
 .home-purpose-wrapper {
-  width: 30%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .p-wrapper {
   width: 80%;
 }
 
-.p-wrapper > p {
+.p-wrapper > p, i {
   font-size: 2.4rem;
+}
+
+.p-wrapper > p {
+  margin: 2rem;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

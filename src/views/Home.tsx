@@ -6,27 +6,24 @@ const Home: React.FC = () => {
     <AppShell>
       <div className="home-wrapper">
         <div className="home-title-wrapper">
-          <h1 className="home-title">Dune</h1>
-          <h2 className="home-description">A Dune quote qenerator</h2>
+          <div>
+            <h1 className="home-title">Dune</h1>
+            <h2 className="home-description">A Dune quote qenerator</h2>
+          </div>
         </div>
         <div className="home-purpose-wrapper">
           <div className="p-wrapper">
             <p>
-              Frank Herbert's Dune series is packed with
-              timeless wisdom, and this quote generator finds the
-              most prophetic bits of insight and imparts them onto
-              your pysche.
+              Samples of sage advice and timeless wisdom from the characters from Frank Herbert's sci-fi series, <i>Dune</i>.
             </p>
             <p>
-              Learn lessons of leadership from Muad'Dib, lessons of trust
-              and loyalty from Gurney Halleck and violence and courage 
-              from Thurfir Hawwatt.
+              Insights into topics range from macro--politics, economics, strategy--to micro--courage, sacrifice, loyalty, and love.
             </p>
-            <p>
-              With the release of Denis Villanueve's film adaptation
-              postponed until 2021, the itergalctic void that is 2020
-              needed to be occupied by something Dune-related.  This is it.
-            </p>
+            <div className="button-wrapper">
+              <button className="button med">
+                Enter
+              </button>
+            </div>
           </div>
         </div>
       </div>
