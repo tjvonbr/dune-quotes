@@ -1,9 +1,14 @@
+.hamburger-wrapper {
+  width: 5.0rem;
+  height: 5.0rem;
+  background-color: white;
+  @include flex-column-center;
+}
+
 .hamburger {
-  height: 2.5rem;
-  position: absolute;
-  top: 15px;
-  left: 15px;
+  height: 2.4rem;
   display: flex;
+  background-color: white;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -26,5 +31,8 @@
   height: 3px;
   background-color: black;
   border-radius: 3px;
+}
+
+.hamburger.top {
   
 }

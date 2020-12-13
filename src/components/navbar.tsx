@@ -1,22 +1,29 @@
 import React from "react"
-import { RouteComponentProps, withRouter } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
-interface BoolProps extends RouteComponentProps {
+interface BoolProps {
   visible: boolean,
 }
 
-const Navbar:React.FC<BoolProps> = ({ history, visible }) => {
+const Navbar:React.FC<BoolProps> = ({ visible }) => {
   return (
     <nav className={visible ? "navbar active" : "navbar"}>
-      <button 
-        type="button"
-        className="button-nav"
-        onClick={() => history.push("/login")}
+      <NavLink 
+        exact to="/"
+        className="nav-item"
+        activeClassName="nav-item active"
+      >
+        Home
+      </NavLink>
+      <NavLink 
+        to="/login"
+        className="nav-item"
+        activeClassName="nav-item active" 
       >
         Login
-      </button>
+      </NavLink>
     </nav>
   )
 }
 
-export default withRouter(Navbar)
+export default Navbar

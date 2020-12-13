@@ -7,13 +7,15 @@ type HamburgerProps = {
 
 const Hamburger = ({ visible, toggle }: HamburgerProps) => {
   return (
-    <div 
-      className={visible ? "hamburger active" : "hamburger"} 
-      onClick={toggle}
-    >
-      <div className="hamburger-bar" />
-      <div className="hamburger-bar" />
-      <div className="hamburger-bar" />
+    <div className="hamburger-wrapper">
+      <div 
+        className={visible ? "hamburger active" : "hamburger"} 
+        onClick={toggle}
+      >
+        <div className="hamburger-bar" />
+        <div className="hamburger-bar" />
+        <div className="hamburger-bar" />
+      </div>
     </div>
   )
 }

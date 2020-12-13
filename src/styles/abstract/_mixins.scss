@@ -1,9 +1,16 @@
-@mixin fade-in {
+@mixin fade-in($time) {
   opacity: 1;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
-  animation-duration: 1.5s;
+  animation-duration: $time;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes fadeInOpacity {

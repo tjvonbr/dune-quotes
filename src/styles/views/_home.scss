@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @include fade-in;
+  @include fade-in(1.5s);
 }
 
 .home-title {

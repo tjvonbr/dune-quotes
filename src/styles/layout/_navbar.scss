@@ -1,17 +1,35 @@
 .navbar {
-  height: 5vh;
-  width: 20%;
+  height: 5.0rem;
+  border: 1px solid black;
+  width: 10%;
   position: fixed;
-  left: -20%;
+  left: -15%;
   top: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   z-index: 1;
-  transition: left ease-in-out .5s
+  transition: left ease-in-out .2s;
 }
 
 .navbar.active {
-  left: 0;
+  @include fade-in(.4s);
+  left: 5.0rem;
+}
+
+.nav-item {
+  font-size: 1.6rem;
+  text-decoration: none;
+  transition: all ease-in .12s;
+  color: black;
+
+  &:hover {
+    transform: translateY(-3px);
+    
+  }
+}
+
+.nav-item.active {
+  text-decoration: underline;
 }
