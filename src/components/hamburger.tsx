@@ -1,4 +1,4 @@
-import React, { MouseEvent } from "react"
+import React from "react"
 
 type HamburgerProps = {
   visible: boolean,
@@ -11,6 +11,7 @@ const Hamburger = ({ visible, toggle }: HamburgerProps) => {
       className={visible ? "hamburger active" : "hamburger"} 
       onClick={toggle}
     >
+      <div className="hamburger-bar" />
       <div className="hamburger-bar" />
       <div className="hamburger-bar" />
     </div>
