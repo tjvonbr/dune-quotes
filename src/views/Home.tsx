@@ -1,7 +1,12 @@
-import React from "react"
+import * as React from "react"
 import AppShell from "../components/app-shell"
+import { RouteComponentProps } from "react-router-dom"
 
-const Home: React.FC = () => {
+interface HomeProps extends RouteComponentProps {
+  onClick: React.MouseEventHandler<HTMLButtonElement>
+}
+
+const Home: React.FC<HomeProps> = ({ history }) => {
   return (
     <AppShell>
       <div className="home-wrapper">
@@ -16,7 +21,10 @@ const Home: React.FC = () => {
           </p>
         </div>
         <div className="button-wrapper">
-          <button className="button med">
+          <button
+            className="button med"
+            onClick={() => history.push("/dashboard")}
+          >
             Enter
           </button>
         </div>
