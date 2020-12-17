@@ -12,22 +12,30 @@ const App = () => {
   const [quote, setQuote] = useState([])
 
   useEffect(() => {
-    axios.get("http://localhost:3000/quotes")
-    .then(res => {
-      const { length } = res.data
-      const id = randomNum(length)
+    // Fetches 'random' quote from local storage
+    const fetchQuote = () => {
+      const quotes = JSON.parse(window.localStorage.getItem("quotes"))
+      const id = randomNum(quotes.length)
+      const quoteOfDay = quotes[id]
+      setQuote(quoteOfDay)
+    }
 
-      axios.get(`http://localhost:3000/quotes/${id}`)
-        .then(res => {
-          setQuote(res.data)
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    // Checks to see if quotes are in local storage--appends if not
+    const fetchAllQuotes = async () => {
+      try {
+        if (window.localStorage.getItem("quotes") !== null) {
+          fetchQuote()
+        } else {
+          const res = await axios.get("http://localhost:3000/quotes")
+          window.localStorage.setItem("quotes", JSON.stringify(res.data))
+          fetchQuote()
+        }
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    fetchAllQuotes()
   }, [])
 
   return (

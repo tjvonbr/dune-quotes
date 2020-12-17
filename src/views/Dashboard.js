@@ -5,7 +5,7 @@ const Dashboard = ({ quote }) => {
   return (
     <AppShell>
       <div>
-        <p>{quote[0].quote}</p>
+        <p>{quote.quote}</p>
       </div>
     </AppShell>
 
