@@ -10,7 +10,6 @@ const AppShell: React.FC<Props> = ({ children }) => {
   const [isVisible, setIsVisible] = useState<boolean>(false)
 
   const toggleNavbar = () => {
-    console.log(isVisible)
     setIsVisible(!isVisible)
   }
 

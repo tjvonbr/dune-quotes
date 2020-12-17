@@ -1,11 +1,14 @@
-import * as React from "react"
+import React from "react"
 import AppShell from "../components/app-shell"
 
-const Dashboard: React.FC = () => {
+const Dashboard = ({ quote }) => {
   return (
     <AppShell>
-      <h1>Dashboard</h1>
+      <div>
+        <p>{quote[0].quote}</p>
+      </div>
     </AppShell>
+
   )
 }
 
