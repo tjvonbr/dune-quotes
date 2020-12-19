@@ -1,0 +1,23 @@
+.toolbar-wrapper {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.toolbar-tools-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 150px;
+  height: 100%;
+}
+
+.heart {
+  transition: all .2s;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(1px);
+  }
+}

@@ -3,4 +3,5 @@
   width: 100vw;
   position: relative;
   margin: 0;
+  @include fade-in(1.5s);
 }
