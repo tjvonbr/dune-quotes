@@ -1,46 +1,65 @@
-import React, { useState } from "react"
+import React from "react"
 import AppShell from "../components/app-shell"
+import { Formik, Field, Form, FormikHelpers } from "formik"
+import axios from "axios"
 
-type LoginUser = {
+interface FormValues {
   email: string,
   password: string
 }
 
 const Login: React.FC = () => {
-  const [creds, setCreds] = useState({
-    email: "",
-    password: ""
-  })
-
   return (
     <AppShell>
       <div className="center-wrapper">
         <h1 className="register-header">Login</h1>
-        <form className="form-wrapper login">
-          <div className="input-wrapper">
-            <label className="label" htmlFor="email">
-              Email
-            </label>
-            <input 
-              className="input"
-              id="email"
-              type="text" 
-            />
-          </div>
-          <div className="input-wrapper">
-            <label className="label" htmlFor="password">
-                Password
-            </label>
-            <input 
-              className="input"
-              id="password"
-              type="text" 
-            />
-          </div>
-          <button className="button-register" type="submit">
-            Login
-          </button>
-        </form>
+        <Formik
+          initialValues={{
+            email: "",
+            password: ""
+          }}
+          onSubmit={(
+            values: FormValues,
+            { setSubmitting }: FormikHelpers<FormValues>
+          ) => {
+            console.log(values)
+            axios.post("http://localhost:3000/login", values)
+              .then(res => {
+                setSubmitting(false)
+              })
+              .catch(err => {
+                setSubmitting(false)
+              })
+          }}
+        >
+          <Form className="form-wrapper login">
+            <div className="input-wrapper">
+              <label className="label" htmlFor="email">
+                Email
+              </label>
+              <Field 
+                className="input"
+                name="email"
+                id="email"
+                type="email"
+              />
+            </div>
+            <div className="input-wrapper">
+              <label className="label" htmlFor="password">
+                  Password
+              </label>
+              <Field 
+                className="input"
+                name="password"
+                id="password"
+                type="password"
+              />
+            </div>
+            <button className="button-form" type="submit">
+              Login
+            </button>
+          </Form>
+        </Formik>
         <p className="redirect">
           Don't have an account yet? Register{" "}
             <a href="/register">here.</a>

@@ -5,7 +5,10 @@ const Toolbar = () => {
   return (
     <div className="toolbar-wrapper">
       <div className="toolbar-tools-wrapper">
-        <button className="button small ">
+        <button 
+          className="toolbar-btn"
+          onClick={() => window.location.reload()}  
+        >
           Refresh
         </button>
         <FaRegHeart className="heart unselected" size={20}/>

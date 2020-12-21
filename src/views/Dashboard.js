@@ -6,7 +6,7 @@ const Dashboard = ({ quote }) => {
   return (
     <AppShell>
       <div className="flex-column-center">
-        <div style={{width: "50%"}}>
+        <div className="dash-content-wrapper">
           <div className="dash-quote-wrapper">
             <p className="dash-quote">
               {`"${quote.quote}"`}
@@ -16,7 +16,6 @@ const Dashboard = ({ quote }) => {
         </div>
       </div>
     </AppShell>
-
   )
 }
 
