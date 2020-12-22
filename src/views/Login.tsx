@@ -1,6 +1,7 @@
 import React from "react"
 import AppShell from "../components/app-shell"
 import { Formik, Field, Form, FormikHelpers } from "formik"
+import { RouteComponentProps, withRouter } from "react-router"
 import axios from "axios"
 
 interface FormValues {
@@ -8,7 +9,7 @@ interface FormValues {
   password: string
 }
 
-const Login: React.FC = () => {
+const Login = ({ history }: RouteComponentProps) => {
   return (
     <AppShell>
       <div className="center-wrapper">
@@ -26,6 +27,7 @@ const Login: React.FC = () => {
             axios.post("http://localhost:3000/login", values)
               .then(res => {
                 setSubmitting(false)
+                history.replace("/dashboard")
               })
               .catch(err => {
                 setSubmitting(false)
@@ -69,4 +71,4 @@ const Login: React.FC = () => {
   )
 }
 
-export default Login
+export default withRouter(Login)

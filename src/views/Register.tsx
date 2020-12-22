@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import AppShell from "../components/app-shell"
 import { Formik, Field, Form, FormikHelpers } from "formik"
+import { RouteComponentProps, withRouter } from "react-router"
 import axios from "axios"
 
 interface RegisterValues {
@@ -9,7 +10,9 @@ interface RegisterValues {
   password: string
 }
 
-const Register: React.FC = () => {
+const Register = ({ history }: RouteComponentProps) => {
+  const [errorMessage, setErrorMessage] = useState<string>("")
+
   return (
     <AppShell>
       <div className="center-wrapper">
@@ -29,10 +32,12 @@ const Register: React.FC = () => {
               .then(res => {
                 console.log(res)
                 setSubmitting(false)
+                history.push("/dashboard")
               })
               .catch(err => {
                 console.log(err)
                 setSubmitting(false)
+                setErrorMessage(err.message)
               })
           }}
         >
@@ -84,4 +89,4 @@ const Register: React.FC = () => {
   )
 }
 
-export default Register
+export default withRouter(Register)

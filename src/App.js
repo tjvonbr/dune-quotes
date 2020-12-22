@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
+import { AuthContext, AuthProvider } from './context/auth-provider';
 import axios from "axios"
-import Dashboard from "./views/Dashboard.js"
+import Dashboard from "./views/Dashboard"
 import Home from "./views/Home"
 import Login from "./views/Login"
 import Register from "./views/Register"
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 import randomNum from "./utils/number-generator"
 import "./styles/main.scss"
 
@@ -40,13 +41,15 @@ const App = () => {
 
   return (
     <Router>
-      <Route exact path="/" component={Home} />
-      <Route 
-        path="/dashboard" 
-        render={props => <Dashboard quote={quote} />} 
-      />
-      <Route path="/register" component={Register} />
-      <Route path="/login" component={Login} />
+      <AuthProvider>
+        <Route exact path="/" component={Home} />
+        <Route 
+          path="/dashboard" 
+          render={props => <Dashboard quote={quote} />} 
+        />
+        <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
+      </AuthProvider>
     </Router>
   );
 }
