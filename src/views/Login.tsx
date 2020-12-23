@@ -1,5 +1,6 @@
-import React from "react"
+import * as React from "react"
 import AppShell from "../components/app-shell"
+import { AuthContext } from "../context/auth-provider"
 import { Formik, Field, Form, FormikHelpers } from "formik"
 import { RouteComponentProps, withRouter } from "react-router"
 import axios from "axios"
@@ -10,6 +11,8 @@ interface FormValues {
 }
 
 const Login = ({ history }: RouteComponentProps) => {
+  const auth = React.useContext(AuthContext)
+
   return (
     <AppShell>
       <div className="center-wrapper">
@@ -19,19 +22,14 @@ const Login = ({ history }: RouteComponentProps) => {
             email: "",
             password: ""
           }}
-          onSubmit={(
+          onSubmit={async (
             values: FormValues,
             { setSubmitting }: FormikHelpers<FormValues>
           ) => {
             console.log(values)
-            axios.post("http://localhost:3000/login", values)
-              .then(res => {
-                setSubmitting(false)
-                history.replace("/dashboard")
-              })
-              .catch(err => {
-                setSubmitting(false)
-              })
+            const response = await auth.login(values)
+            history.replace("/dashboard")
+            setSubmitting(false)
           }}
         >
           <Form className="form-wrapper login">

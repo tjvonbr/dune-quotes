@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react"
 import { useHistory } from 'react-router-dom';
+import axios from "axios";
 
 const AuthContext = createContext()
 const { Provider } = AuthContext
@@ -34,7 +35,22 @@ const AuthProvider = ({ children }) => {
       return false
     }
 
-    return new Date().getItem() / 1000 < authState.expiresAt
+    return new Date().getTime() / 1000 < authState.expiresAt
+  }
+
+  const login = async (credentials, ...props) => {
+    return axios.post("http://localhost:3000/login", credentials)
+      .then(res => {
+        if (res.status === 200) {
+          setAuthInfo(res.data)
+          return res.data
+        } else {
+          return Promise.reject("Sorry, but we couldn't log you in!")
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   const logout = () => {
@@ -53,6 +69,7 @@ const AuthProvider = ({ children }) => {
         authState,
         setAuthInfo,
         isAuthenticated,
+        login,
         logout
       }}
     >

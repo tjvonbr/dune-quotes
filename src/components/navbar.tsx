@@ -1,4 +1,5 @@
-import React from "react"
+import * as React from "react"
+import { AuthContext } from "../context/auth-provider"
 import { NavLink } from "react-router-dom"
 
 interface BoolProps {
@@ -6,6 +7,8 @@ interface BoolProps {
 }
 
 const Navbar:React.FC<BoolProps> = ({ visible }) => {
+  const auth = React.useContext(AuthContext)
+
   return (
     <nav className={visible ? "navbar active" : "navbar"}>
       <NavLink 
@@ -16,11 +19,11 @@ const Navbar:React.FC<BoolProps> = ({ visible }) => {
         Home
       </NavLink>
       <NavLink 
-        to="/login"
+        to={auth.isAuthenticated() ? "/logout" : "/login"}
         className="nav-item"
         activeClassName="nav-item active" 
       >
-        Login
+        {auth.isAuthenticated() ? "Logout" : "Login"}
       </NavLink>
     </nav>
   )
