@@ -35,7 +35,9 @@ const AuthProvider = ({ children }) => {
       return false
     }
 
-    return new Date().getTime() / 1000 < authState.expiresAt
+    const currTime = new Date().getTime()
+    console.log(currTime)
+    return currTime / 1000 < authState.expiresAt
   }
 
   const login = async (credentials, ...props) => {

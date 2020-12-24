@@ -4,8 +4,9 @@ import axios from "axios"
 import Dashboard from "./views/Dashboard"
 import Home from "./views/Home"
 import Login from "./views/Login"
+import Logout from "./views/Logout"
 import Register from "./views/Register"
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import randomNum from "./utils/number-generator"
 import "./styles/main.scss"
 
@@ -28,6 +29,7 @@ const App = () => {
           fetchQuote()
         } else {
           const res = await axios.get("http://localhost:3000/quotes")
+          console.log(res)
           window.localStorage.setItem("quotes", JSON.stringify(res.data))
           fetchQuote()
         }
@@ -49,6 +51,7 @@ const App = () => {
         />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
+        <Route path="/logout" component={Logout} />
       </AuthProvider>
     </Router>
   );

@@ -3,7 +3,6 @@ import AppShell from "../components/app-shell"
 import { AuthContext } from "../context/auth-provider"
 import { Formik, Field, Form, FormikHelpers } from "formik"
 import { RouteComponentProps, withRouter } from "react-router"
-import axios from "axios"
 
 interface FormValues {
   email: string,

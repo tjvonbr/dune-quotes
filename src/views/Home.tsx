@@ -22,7 +22,7 @@ const Home: React.FC<HomeProps> = ({ history }) => {
         </div>
         <div className="button-wrapper">
           <button
-            className="button med"
+            className="button-logout"
             onClick={() => history.push("/dashboard")}
           >
             Enter
